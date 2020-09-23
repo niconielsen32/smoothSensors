@@ -51,7 +51,7 @@ class irSensor():
             if adcValue[i] == 0:
                 print("Cup Sensor " + str(i) + " does not work! - Check connections")
         
-        print("ADC first value: ", adcValue)
+        print("ADC first value: ", adcValue[:self.numberOfSensors])
         print("ADC threshold: ", self.adcThreshold)
         
         return self.adcThreshold
