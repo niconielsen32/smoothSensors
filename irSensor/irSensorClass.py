@@ -1,3 +1,4 @@
+#pip install grove.py
 from grove.i2c import Bus
  
  
@@ -46,6 +47,9 @@ class irSensor():
         for i in range(self.numberOfSensors):
             # Set the threshold for each individual sensor
             self.adcThreshold[i] = adcValue[i] * self.sensorThreshold
+            
+            if adcValue[i] == 0:
+                print("Cup Sensor " + str(i) + " does not work! - Check connections")
         
         print("ADC first value: ", adcValue)
         print("ADC threshold: ", self.adcThreshold)
@@ -58,10 +62,6 @@ class irSensor():
         values = self.adc.get_all_adc_raw_data()
         
         for i in range(self.numberOfSensors):
-            # The read_adc function will get the value of the specified channel (0-7).
-            
-            if values[i] == 0:
-                print("Cup Sensor " + str(i) + " does not work! - Check connections")
             
             # check if sensor value goes over threshold - cup removed/placed back
             if values[i] >= self.adcThreshold[i]:
