@@ -83,4 +83,4 @@ class irSensor():
             #print('| {0:>4} | {1:>4} | {2:>4} | {3:>4} |'.format(*values))
             # Pause for half a second.
             
-            return self.cupRemoved, self.numberOfCupsTaken
+         return self.cupRemoved, self.numberOfCupsTaken
